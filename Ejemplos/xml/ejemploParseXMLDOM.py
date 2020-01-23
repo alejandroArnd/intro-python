@@ -9,7 +9,7 @@
 # libxml2 (C extension)           0.098 s 16000k
 # readlines (read as utf-8)       0.093 s 8850k
 # cElementTree (C extension)  --> 0.047 s 4900K <--
-# readlines (read as ascii)       0.032 s 5050k
+
 
 from xml.dom import minidom
 from lxml import etree
@@ -24,6 +24,6 @@ for neighbor in neighborlist:
 
 print('Parseo con lxml')
 xml = etree.parse('ejmeplo.xml')
-vecinosNorte= xml.xpath(".//*[@direction = 'E']")
-for vecino in vecinosNorte:
-    print(vecino.attrib)
+yearsCountry= xml.xpath("/data/country/year/text()")
+for year in yearsCountry:
+    print(year)
