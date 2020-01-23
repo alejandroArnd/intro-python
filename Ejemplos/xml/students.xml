@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<students>
+    <student>
+        <name>Alex</name>
+        <lastName>Aranda</lastName>
+        <age>20</age>
+        <profession>Airplane Destroyer</profession>
+        <hobbies>
+            <hobbie skillLevel="high++">Strolling</hobbie>
+            <hobbie skillLevel="high">Cooking</hobbie>
+        </hobbies>
+    </student>
+    <student>
+        <name>Roberto</name>
+        <lastName>Muñoz de León</lastName>
+        <age>19</age>
+        <profession>Meme designer</profession>
+        <hobbies>
+            <hobbie skillLevel="medium">Breathing</hobbie>
+            <hobbie skillLevel="low">Being a good programmer</hobbie>
+        </hobbies>
+    </student>
+    <student>
+        <name>Ruben</name>
+        <lastName>Escobar</lastName>
+        <age>20</age>
+        <profession>Future videogame designer</profession>
+        <hobbies>
+            <hobbie skillLevel="medium">Flirt</hobbie>
+            <hobbie skillLevel="high">Specialist in memes sounds</hobbie>
+        </hobbies>
+    </student>
+</students>
