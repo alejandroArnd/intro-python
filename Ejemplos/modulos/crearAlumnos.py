@@ -1,2 +1,2 @@
-import alumno
-alumxno = Alumno()
+from Ejemplos.modulos.alumno import Alumno
+alumno = Alumno()
