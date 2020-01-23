@@ -1,0 +1,2 @@
+import alumno
+alumxno = Alumno()

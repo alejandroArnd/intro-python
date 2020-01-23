@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "Alex",
+    "Age": 20,
+    "Profession": "Airplane Destroyer",
+    "Hobbies": ["Strolling","Cooking"]
+  },
+  {
+    "Name": "Roberto",
+    "Age": 19,
+    "Profession": "Meme designer",
+    "Hobbies": ["Breathing", "Being a good programmer"]
+  }
+]
