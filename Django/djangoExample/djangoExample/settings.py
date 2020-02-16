@@ -77,10 +77,37 @@ WSGI_APPLICATION = 'djangoExample.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'MOVIES',
+        'USER:': 'alejandro',
+        'PASSWORD': 'chooseone',
+        'HOST': 'vps722937.ovh.net',
+        'PORT': '3306'
+    }
+}
+
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'your_project_name',
+        'USER': 'root',
+        'PASSWORD': 'your_root_password',
+        'HOST': 'your_host_address', 
+        'PORT': 'your_port',
+    }
+}
+'''
+
+''' BACKUP
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+'''
+
 
 
 # Password validation
