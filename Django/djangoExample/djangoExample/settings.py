@@ -25,7 +25,7 @@ SECRET_KEY = 'ghtqjuuwe7v8@mr3#wn!xijw(9hih9dpjsjnhbcn075t_jf-99'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vps722937.ovh.net']
 
 
 # Application definition
@@ -79,27 +79,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'MOVIES',
-        'USER:': 'alejandro',
-        'PASSWORD': 'chooseone',
-        'HOST': 'vps722937.ovh.net',
-        'PORT': '3306'
+        'USER': 'alejandro',
+        'PASSWORD': 'choosenone',
+        'PORT': '3306',
+        'HOST': '51.91.58.160',
+        'STORAGE_ENGINE': 'INNODB'
     }
 }
 
 '''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'your_project_name',
-        'USER': 'root',
-        'PASSWORD': 'your_root_password',
-        'HOST': 'your_host_address', 
-        'PORT': 'your_port',
-    }
-}
-'''
-
-''' BACKUP
+# BACKUP
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
