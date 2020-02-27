@@ -17,11 +17,46 @@
     }
 },
 {
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$180000$TBRjS48UHGfm$Wg4kht6XcocWxKyDBVxqFNYQb+ogq19mrB1+eEK2t5c=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "robertotototo",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-02-27T17:37:04.059Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
     "model": "sessions.session",
     "pk": "2kqhhxvbi9aqixjohjydlkoenxnu7z4o",
     "fields": {
         "session_data": "ZWZjZjA5ZTIxNWNjYzY1ZTE4MDJlOGI3ZGE5ZjhlZjI4NjhkY2FiMTp7Il9hdXRoX3VzZXJfaGFzaCI6IjRhODVkNDg0Y2E4YmJiNDU1MTdkN2RhNGQ2MTU4NzBiOTkxMDQzNTgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
         "expire_date": "2020-03-01T18:45:55.025Z"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2020-02-27T17:37:04.191Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "robertotototo",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 }
 ]
