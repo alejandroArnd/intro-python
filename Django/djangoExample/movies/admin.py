@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib import admin
-from movies.models import Movie
+from .models import Movie
 from .models import Director
 
 # Register your models here.
