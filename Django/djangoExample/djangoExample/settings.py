@@ -25,7 +25,7 @@ SECRET_KEY = 'ghtqjuuwe7v8@mr3#wn!xijw(9hih9dpjsjnhbcn075t_jf-99'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['51.91.58.160']
+ALLOWED_HOSTS = ['vps722937.ovh.net']
 
 
 # Application definition
@@ -74,6 +74,7 @@ WSGI_APPLICATION = 'djangoExample.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -87,19 +88,7 @@ DATABASES = {
 }
 
 '''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'your_project_name',
-        'USER': 'root',
-        'PASSWORD': 'your_root_password',
-        'HOST': 'your_host_address', 
-        'PORT': 'your_port',
-    }
-}
-'''
-
-''' BACKUP
+# BACKUP
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
