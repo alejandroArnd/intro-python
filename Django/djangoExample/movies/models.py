@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from enum import Enum
+
 from django.db import models
+import time
+
 
 # Create your models here.
 
@@ -11,6 +15,18 @@ from django.db import models
 #     def __str__(self):
 #         return self.name
 
+class Genre(Enum):
+    TERROR = 'TERROR'
+    ACTION = 'ACTION'
+    DRAMA = 'DRAMA'
+    THRILLER = 'THRILLER'
+
+    @classmethod
+    def choices(cls):
+        return [(choice.name, choice.value) for choice in cls]
+
+
+
 class Director(models.Model):
     name = models.CharField('Name', max_length=50)
     birht_date = models.DateField('Birth Date', blank=True)
@@ -18,20 +34,30 @@ class Director(models.Model):
     def __str__(self):
         return self.name
 
+
 class Movie(models.Model):
-    GENRES = {
-        (1, 'TERROR'),
-        (2, 'ACTION'),
-        (3, 'DRAMA'),
-        (4, 'THRILLER'),
-    }
+    # GENRES = {
+    #     (1, 'TERROR'),
+    #     (2, 'ACTION'),
+    #     (3, 'DRAMA'),
+    #     (4, 'THRILLER'),
+    # }
+    #
+    # GENRES = [
+    #     'TERROR',
+    #     'ACTION',
+    #     'DRAMA',
+    #     'THRILLER',
+    # ]
 
     def uploadImageDirectory(self, filename):
-        return 'media/moviePosters/%s_%s' % (self.id, filename)
+        return 'moviePosters/%s_%s' % (time.time(), filename)
 
     title = models.CharField('Title', max_length=40, null=False, default='untitled')
+    plot = models.CharField('Movie Plot', max_length=1000, null=False, default='No plot defined')
     units = models.DecimalField('Available Units', max_digits=4, decimal_places=0, default=1)
-    genre = models.PositiveSmallIntegerField('Genre', choices=GENRES, default=2)
+    # genre = models.CharField('Genre', choices=[(tag, tag.value) for tag in Genre], default=Genre.ACTION, max_length=20)
+    genre = models.CharField('Genre', choices=Genre.choices(), default=Genre.ACTION, max_length=20)
 
     poster = models.ImageField('Poster', upload_to=uploadImageDirectory, null=True)
 

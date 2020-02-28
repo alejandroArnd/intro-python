@@ -1,7 +1,10 @@
 from django.conf.urls import url
+from django.urls import path
 
-from movies.views import defaultView
+
+from .views import moviesList, showMovieData
 
 urlpatterns = [
-    url(r'^$', defaultView, name='DeaultView')
-    ]
+    url(r'^$', moviesList, name='Movies list'),
+    path('<int:id>/', showMovieData, name="address_edit"),
+]
