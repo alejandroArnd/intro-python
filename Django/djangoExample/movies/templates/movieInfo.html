@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ movie.title }} - {{ siteName }} </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+
+    <style>
+        dl {
+            width: 395px;
+            font-size: 15px
+        }
+
+        dd, dt {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        dt {
+            float: left;
+            padding-right: 5px;
+            font-weight: bolder;
+        }
+
+        dt {
+            clear: left;
+        }
+
+        dt, dd {
+            min-height: 1.5em;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-4" style="background-color: blue">
+            <img src="{{ movie.poster.url }}" width="352px">
+        </div>
+        <div class="col-8" style="background-color: red">
+            <h2>{{ movie.title }}</h2>
+            <dl>
+                <dt>Director:</dt>
+                <dd>{{ movie.director_id }}</dd>
+                <dt>Genre:</dt>
+                <dd>{{ movie.genre }}</dd>
+                <dt>Plot:</dt>
+                <dd>{{ movie.plot }}</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <button type="button" class="btn btn-primary btn-lg btn-block">RENT MOVIE NOW!</button>
+        </div>
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>
