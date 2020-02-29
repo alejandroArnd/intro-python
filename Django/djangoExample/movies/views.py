@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.http import  HttpResponse
+from django.http import  HttpResponse, JsonResponse
 
 from django.shortcuts import render
 
@@ -26,3 +26,9 @@ def showMovieData(request, id):
     }
 
     return render(request, 'movieInfo.html', context)
+
+
+def rentMovie(request, id):
+    movie = Movie.objects.get(id=id)
+    print(movie)
+    return JsonResponse({'status': 'ok'})

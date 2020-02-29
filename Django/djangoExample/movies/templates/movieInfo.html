@@ -56,6 +56,8 @@
                 <dd>{{ movie.genre }}</dd>
                 <dt>Plot:</dt>
                 <dd>{{ movie.plot }}</dd>
+                <dt>Units available:</dt>
+                <dd>{{ movie.units }}</dd>
             </dl>
         </div>
     </div>
@@ -68,7 +70,7 @@
         </div>
 
         <div class="col-6">
-            <button type="button" class="btn btn-primary btn-lg btn-block">RENT MOVIE NOW!</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="{{ movie.rent }}">RENT MOVIE NOW!</button>
         </div>
     </div>
 
