@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ movie.title }} - {{ siteName }} </title>
+        <script src="http://vps722937.ovh.net:80/dwes/resources/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="http://vps722937.ovh.net:80/dwes/resources/jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="http://vps722937.ovh.net:80/dwes/resources/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="http://vps722937.ovh.net:80/dwes/resources/cookies.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
@@ -57,7 +61,7 @@
                 <dt>Plot:</dt>
                 <dd>{{ movie.plot }}</dd>
                 <dt>Units available:</dt>
-                <dd>{{ movie.units }}</dd>
+                <dd id="units">{{ movie.units }}</dd>
             </dl>
         </div>
     </div>
@@ -70,12 +74,24 @@
         </div>
 
         <div class="col-6">
-            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="{{ movie.rent }}">RENT MOVIE NOW!</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="btnRent" >RENT MOVIE NOW!</button>
         </div>
     </div>
 
 </div>
 </div>
-
+<script>
+    $('#btnRent').click(function () {
+        var myCookie = docCookies.getItem("csrftoken");
+      $.ajax({
+          type: 'POST',
+          headers: { "X-CSRFToken": myCookie },
+          url: '{% url "rent_movie" %}',
+          data: {"id":'{{movie.id}}'},
+      }).done(function (response) {
+          $('#units').text(response.units);
+      })
+      });
+</script>
 </body>
 </html>

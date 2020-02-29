@@ -28,7 +28,9 @@ def showMovieData(request, id):
     return render(request, 'movieInfo.html', context)
 
 
-def rentMovie(request, id):
-    movie = Movie.objects.get(id=id)
-    print(movie)
-    return JsonResponse({'status': 'ok'})
+def rentMovie(request):
+    id = request.POST.get("id");
+    movie=Movie.objects.get(id=id);
+    movie.units-=1;
+    movie.save();
+    return JsonResponse({'status': 'ok','units':movie.units})
