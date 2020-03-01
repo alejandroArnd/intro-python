@@ -8,13 +8,19 @@
     <link rel="stylesheet" href="http://vps722937.ovh.net:80/dwes/resources/jquery-ui-1.12.1/jquery-ui.min.css">
     <script src="http://vps722937.ovh.net:80/dwes/resources/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script src="http://vps722937.ovh.net:80/dwes/resources/cookies.js"></script>
-    <script src="{% static 'node_modules/bootstrap-star-rating/js/star-rating.js' %}"></script>
+    {#    <script src="{% static 'node_modules/bootstrap-star-rating/js/star-rating.js' %}"></script>#}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{#    <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>#}
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    {#    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">#}
 
-    <link href="{% static 'node_modules/bootstrap-star-rating/css/star-rating.min.css' %}" rel="stylesheet"/>
+
+    {#    <link href="{% static 'node_modules/bootstrap-star-rating/css/star-rating.min.css' %}" rel="stylesheet"/>#}
+    {#<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />#}
+    {#<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js" type="text/javascript"></script>#}
+
+    <!-- Star Rating library -->
+    <script src="{% static 'jquery.emojiRatings.min.js' %}"></script>
 
     <style>
         dl {
@@ -72,9 +78,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center mb-2">
-                        <label for="input-1" class="control-label">Rate This</label>
-                        <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5"
-                               data-step="1">
+                        <h2>Rate this movie:</h2>
+                        <div id="rating"></div>
                     </div>
                 </div>
             </div>
@@ -101,6 +106,20 @@
             $('#units').text(response.units);
         })
     });
+
+    const options = {
+        emoji: 'star',
+        count: 5,
+        fontSize: 30,
+        inputName: 'rating',
+        onUpdate: function (score) {
+            console.log('Vote: ',score);
+            $('#rating').replaceWith(`<h3>Thanks for voting!</h3>`)
+
+        }
+    };
+
+    $('#rating').emojiRating(options);
 </script>
 </body>
 </html>
