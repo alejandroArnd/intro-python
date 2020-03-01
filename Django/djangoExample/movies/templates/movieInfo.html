@@ -4,15 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ movie.title }} - {{ siteName }} </title>
-        <script src="http://vps722937.ovh.net:80/dwes/resources/jquery-3.3.1.min.js"></script>
+    <script src="http://vps722937.ovh.net:80/dwes/resources/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="http://vps722937.ovh.net:80/dwes/resources/jquery-ui-1.12.1/jquery-ui.min.css">
     <script src="http://vps722937.ovh.net:80/dwes/resources/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script src="http://vps722937.ovh.net:80/dwes/resources/cookies.js"></script>
-    <script src="{% static  'node_modules/bootstarp-star-rating/js/star-rating.js' %}"></script>
+    <script src="{% static 'node_modules/bootstrap-star-rating/js/star-rating.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
-    <link href="{% static 'node_modules/bootstarp-star-rating/css/star-rating.min.css' %}" rel="stylesheet"/>
+{#    <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>#}
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+
+    <link href="{% static 'node_modules/bootstrap-star-rating/css/star-rating.min.css' %}" rel="stylesheet"/>
 
     <style>
         dl {
@@ -38,18 +40,20 @@
             font-size: 17px;
             min-height: 1.5em;
         }
+
         body {
             color: white;
-              background:linear-gradient(
-      rgba(30,27,38, 0.95),
-      rgba(30,27,38, 0.95)),url("{{movie.poster.url}}") no-repeat center center fixed;
-              background-size: cover;
-             }
+            background: linear-gradient(
+                    rgba(30, 27, 38, 0.95),
+                    rgba(30, 27, 38, 0.95)), url("{{movie.poster.url}}") no-repeat center center fixed;
+            background-size: cover;
+        }
     </style>
 </head>
 <body>
-<div class="container mt-5 " style="border: 3px solid #30001c; border-radius: 3px;    box-shadow:5px 5px 50px -14px black;">
-    <div class="row h-100" >
+<div class="container mt-5 "
+     style="border: 3px solid #30001c; border-radius: 3px;    box-shadow:5px 5px 50px -14px black;">
+    <div class="row h-100">
         <div class="col-4 " style="background-color: blue">
             <img class="mt-2" src="{{ movie.poster.url }}" width="352px">
         </div>
@@ -65,38 +69,38 @@
                 <dt>Units available:</dt>
                 <dd id="units">{{ movie.units }}</dd>
             </dl>
-             <div class="container">
-                 <div class="row">
-                 <div class="col-12 text-center mb-2">
-               <label for="input-1" class="control-label">Rate This</label>
-<input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1">
-                 </div>
-             </div>
-             </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-2">
+                        <label for="input-1" class="control-label">Rate This</label>
+                        <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5"
+                               data-step="1">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <div class="container mt-5">
     <div class="row">
         <div class="col-5 ml-auto">
-            <button type="button" class="btn btn-primary btn-lg btn-block" id="btnRent" >RENT MOVIE NOW!</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="btnRent">RENT MOVIE NOW!</button>
         </div>
     </div>
-
 </div>
 </div>
 <script>
     $('#btnRent').click(function () {
         var myCookie = docCookies.getItem("csrftoken");
-      $.ajax({
-          type: 'POST',
-          headers: { "X-CSRFToken": myCookie },
-          url: '{% url "rent_movie" %}',
-          data: {"id":'{{movie.id}}'},
-      }).done(function (response) {
-          $('#units').text(response.units);
-      })
-      });
+        $.ajax({
+            type: 'POST',
+            headers: {"X-CSRFToken": myCookie},
+            url: '{% url "rent_movie" %}',
+            data: {"id": '{{movie.id}}'},
+        }).done(function (response) {
+            $('#units').text(response.units);
+        })
+    });
 </script>
 </body>
 </html>
