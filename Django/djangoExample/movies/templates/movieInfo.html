@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="http://vps722937.ovh.net:80/dwes/resources/jquery-ui-1.12.1/jquery-ui.min.css">
     <script src="http://vps722937.ovh.net:80/dwes/resources/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script src="http://vps722937.ovh.net:80/dwes/resources/cookies.js"></script>
+    <script src="{% static  'node_modules/bootstarp-star-rating/js/star-rating.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'node_modules/bootstarp-star-rating/css/star-rating.min.css' %}" rel="stylesheet"/>
 
     <style>
         dl {
@@ -66,10 +68,8 @@
              <div class="container">
                  <div class="row">
                  <div class="col-12 text-center mb-2">
-                <div class="custom-control custom-radio custom-control-inline">
-                   <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                   <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
-                </div>
+               <label for="input-1" class="control-label">Rate This</label>
+<input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1">
                  </div>
              </div>
              </div>
