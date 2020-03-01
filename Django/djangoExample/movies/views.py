@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.http import  HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse
 
 from django.shortcuts import render
 
@@ -9,6 +9,7 @@ from .models import Movie
 # Create your views here.
 SITE_NAME = 'Movie Doctor'
 
+
 def moviesList(request):
     context = {
         'movieList': Movie.objects.all(),
@@ -16,7 +17,7 @@ def moviesList(request):
     }
 
     return render(request, 'movies.html', context)
-    #return HttpResponse("Welcome!")
+    # return HttpResponse("Welcome!")
 
 
 def showMovieData(request, id):
@@ -29,8 +30,25 @@ def showMovieData(request, id):
 
 
 def rentMovie(request):
-    id = request.POST.get("id");
-    movie=Movie.objects.get(id=id);
-    movie.units-=1;
-    movie.save();
-    return JsonResponse({'status': 'ok','units':movie.units})
+    response = {'status': 'ko'}
+
+    id = request.POST.get("id")
+    movie = Movie.objects.get(id=id)
+    if movie.units > 0:
+        movie.units -= 1
+        movie.save()
+        response = {'status': 'ok', 'units': movie.units}
+
+    return JsonResponse(response)
+
+
+def rateMovie(request, id):
+    rating = request.GET.get('rating')
+
+    movie = Movie.objects.get(id=id)
+    movie.voters += 1
+    movie.points += int(rating)
+    movie.save()
+
+    newAverage = movie.points / movie.voters
+    return JsonResponse({'status': 'ok', 'newAverage': newAverage})
