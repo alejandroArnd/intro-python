@@ -14,8 +14,7 @@
 
     <style>
         dl {
-            width: 395px;
-            font-size: 15px
+            width: 710px;
         }
 
         dd, dt {
@@ -34,25 +33,26 @@
         }
 
         dt, dd {
+            font-size: 17px;
             min-height: 1.5em;
         }
         body {
-              background-position: center;
-              background-size: cover;
+            color: white;
               background:linear-gradient(
       rgba(30,27,38, 0.95),
-      rgba(30,27,38, 0.95));
+      rgba(30,27,38, 0.95)),url("{{movie.poster.url}}") no-repeat center center fixed;
+              background-size: cover;
              }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-4" style="background-color: blue">
-            <img src="{{ movie.poster.url }}" width="352px">
+<div class="container mt-5 " style="border: 3px solid #30001c; border-radius: 3px;    box-shadow:5px 5px 50px -14px black;">
+    <div class="row h-100" >
+        <div class="col-4 " style="background-color: blue">
+            <img class="mt-2" src="{{ movie.poster.url }}" width="352px">
         </div>
         <div class="col-8" style="background-color: red">
-            <h2>{{ movie.title }}</h2>
+            <h2 class="mt-3">{{ movie.title }}</h2>
             <dl>
                 <dt>Director:</dt>
                 <dd>{{ movie.director_id }}</dd>
@@ -63,17 +63,22 @@
                 <dt>Units available:</dt>
                 <dd id="units">{{ movie.units }}</dd>
             </dl>
+             <div class="container">
+                 <div class="row">
+                 <div class="col-12 text-center mb-2">
+                <div class="custom-control custom-radio custom-control-inline">
+                   <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                   <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
+                </div>
+                 </div>
+             </div>
+             </div>
         </div>
     </div>
+</div>
+<div class="container mt-5">
     <div class="row">
-        <div class="col-6">
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
-            </div>
-        </div>
-
-        <div class="col-6">
+        <div class="col-5 ml-auto">
             <button type="button" class="btn btn-primary btn-lg btn-block" id="btnRent" >RENT MOVIE NOW!</button>
         </div>
     </div>
