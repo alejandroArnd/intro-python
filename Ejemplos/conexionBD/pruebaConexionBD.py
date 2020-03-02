@@ -16,16 +16,17 @@ registros = "SELECT TITULO FROM PRODUCTOS;"
 cursor.execute(registros)
 filas = cursor.fetchall()
 for fila in filas:
-   print(fila)
-
+    print(fila)
 
 # Prepare SQL query to INSERT a record into the database.
 sql = """INSERT INTO PRODUCTOS (ID_USUARIO, REF, TITULO, DESCRIPCION, INICIO, FIN, PRECIO_SALIDA) VALUES(%s,%s,%s,%s,%s,%s,%s)"""
 
-inicio=datetime.datetime(2020, 1, 31);
-fin=datetime.datetime(2020,2,1);
+inicio = datetime.datetime(2020, 1, 31)
+fin = datetime.datetime(2020, 2, 1)
 
-args = (1000,"ASU99","ASUS TUF Gaming FX505DY-BQ024 - Portátil Gaming","Es peor que el de ruben pero bueno no hay dinero", inicio.strftime('%Y/%m/%d'), fin.strftime('%Y/%m/%d'),600)
+args = (
+1000, "ASU99", "ASUS TUF Gaming FX505DY-BQ024 - Portátil Gaming", "Es peor que el de ruben pero bueno no hay dinero",
+inicio.strftime('%Y/%m/%d'), fin.strftime('%Y/%m/%d'), 600)
 
 try:
     # Execute the SQL command
@@ -35,6 +36,6 @@ try:
 
 except Exception as e:
     print(e)
-    conexion.rollback();
+    conexion.rollback()
 # Finalizar
 conexion.close()

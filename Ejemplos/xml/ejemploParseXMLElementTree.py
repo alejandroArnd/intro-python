@@ -2,31 +2,31 @@ import xml.etree.ElementTree as ET
 from pprint import pprint
 
 #Parsear el xml y coger el nodo raiz
-tree = ET.parse('students.xml')
+tree = ET.parse('estudiantes.xml')
 root = tree.getroot()
 
 print("Nombre del nodo raiz: " + root.tag + "\n")
 
-estudiantes = root.findall(".//*[@skillLevel = 'high']/../..")
+estudiantes = root.findall(".//*[@nivel = 'alto']/../..")
 
 print("Estudiantes que tengan buenas habilidades en al menos un hobbie:")
 
 listaEstudiantes = []
 for estudiante in estudiantes:
-    nombre = estudiante.find("name")
-    apellido = estudiante.find("lastName")
-    listaEstudiantes.append({"name": nombre.text, "lastName": apellido.text})
+    nombre = estudiante.find("nombre")
+    apellido = estudiante.find("apellido")
+    listaEstudiantes.append({"nombre": nombre.text, "apellido": apellido.text})
 
 pprint(listaEstudiantes)
 
 # Cambiar el valor de un atributo
-ultimoEstudiante = root.find(".//student[last()]")
+ultimoEstudiante = root.find(".//estudiante[last()]")
 hobbie = ultimoEstudiante.find("./hobbies/hobbie[1]")
 print("\nHobbie:" + hobbie.text + "\nAtributos del hobbie:")
 print(hobbie.attrib)
-hobbie.attrib["skillLevel"] = "low---"
+hobbie.attrib["nivel"] = "bajo---"
 print("Atributo cambiado/mejorado: ")
 print(hobbie.attrib)
 
 # Guardar el xml
-tree.write('output.xml')
+tree.write('output.xml', encoding="UTF-8")

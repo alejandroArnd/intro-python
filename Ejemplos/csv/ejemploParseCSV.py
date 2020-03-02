@@ -5,9 +5,9 @@ with open('alumnos.csv', mode='r', encoding='utf-8') as csv_file:
     line_count = 0
     for row in csv_reader:
         if line_count == 0:
-            print(f'Column names are {",".join(row)}')
+            print(f'Los nombres de las columnas son {",".join(row)}')
             line_count += 1
         else:
           line_count += 1
-          print(row[0]+" "+row[1]+" years old, profession "+row[2])
-    print(f'Processed {line_count} lines.')
+          print(row[0]+" "+row[1]+" años, profesion:  "+row[2])
+    print(f'Procesadas {line_count} lineas.')
