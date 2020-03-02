@@ -1,14 +1,14 @@
 [
   {
-    "Name": "Alex",
-    "Age": 20,
-    "Profession": "Airplane Destroyer",
-    "Hobbies": ["Strolling","Cooking"]
+    "Nombre": "Alex",
+    "Edad": 20,
+    "Profesion": "Destructor de aviones",
+    "Hobbies": ["Pasear","Cocinar"]
   },
   {
-    "Name": "Roberto",
-    "Age": 19,
-    "Profession": "Meme designer",
-    "Hobbies": ["Breathing", "Being a good programmer"]
+    "Nombre": "Roberto",
+    "Edad": 19,
+    "Profesion": "Creador de memes",
+    "Hobbies": ["Respirar", "Ser un buen programador"]
   }
 ]
