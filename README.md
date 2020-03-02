@@ -1,14 +1,14 @@
 # intro-python
 Buenas! Esto es una introducción de python y django
 
-##Ejemplos utilizados
+## Ejemplos utilizados
 
 * XML
 * JSON
 * CSV
 * Mysql
 
-##Django
+## Django
 
 Antes de empezar instalamos un entorno virtual (virtualenv) ya que con ellos podemos mantener 
 los paquetes de nuestro proyecto agrupados, y separados de los paquetes de otros proyectos y del sistema .
@@ -20,7 +20,7 @@ El siguiente paso es iniciar el proyecto con el siguiente comando:
 django-admin startproject nombreProyecto
 ~~~
 
-###Comandos utiles para django
+### Comandos utiles para django
 
 Runsrver para levantar el servidor 
 ~~~
