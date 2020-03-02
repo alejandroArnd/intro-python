@@ -1,14 +1,14 @@
 # Ejemplo de como usar un diccionario
 
 dictionary = {
-    "Name": "Alex",
-    "Age": 20,
-    "Profession": "Airplane Destroyer",
-    "hobbies": "Strolling"
+    "Nombre": "Alex",
+    "Edad": 20,
+    "Profesion": "Destructor de aviones",
+    "hobbies": "Pasear"
 }
 
-print(dictionary["Profession"])
-dictionary["Profession"] = "Programmer"
-print(dictionary["Profession"])
+print(dictionary["Profesion"])
+dictionary["Profesion"] = "Programador fraudulento"
+print(dictionary["Profesion"])
 dictionary.clear()
 print(dictionary)
