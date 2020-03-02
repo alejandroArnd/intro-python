@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<estudiantes>
+    <estudiante>
+        <nombre>Alex</nombre>
+        <apellido>Aranda</apellido>
+        <edad>20</edad>
+        <profesion>Destructor de aviones</profesion>
+        <hobbies>
+            <hobbie nivel="alto++">Pasear</hobbie>
+            <hobbie nivel="alto">Cocinar</hobbie>
+        </hobbies>
+    </estudiante>
+    <estudiante>
+        <nombre>Roberto</nombre>
+        <apellido>Muñoz de León</apellido>
+        <edad>19</edad>
+        <profesion>Creador de memes</profesion>
+        <hobbies>
+            <hobbie nivel="medio">Respirar</hobbie>
+            <hobbie nivel="bajo">Ser un buen programador</hobbie>
+        </hobbies>
+    </estudiante>
+    <estudiante>
+        <nombre>Ruben</nombre>
+        <apellido>Escobar</apellido>
+        <edad>20</edad>
+        <profesion>Creador de videojuegos mediocres</profesion>
+        <hobbies>
+            <hobbie nivel="medio">Ligar</hobbie>
+            <hobbie nivel="alta">Especialista en sonidos de memes</hobbie>
+        </hobbies>
+    </estudiante>
+</estudiantes>
