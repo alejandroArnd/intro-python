@@ -24,6 +24,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='movie',
             name='poster',
-            field=models.ImageField(null=True, upload_to=movies.models.Movie.subirImagenAlDirectorio, verbose_name='Poster'),
+            field=models.ImageField(null=True, upload_to=movies.models.Movie.uploadImageDirectory, verbose_name='Poster'),
         ),
     ]

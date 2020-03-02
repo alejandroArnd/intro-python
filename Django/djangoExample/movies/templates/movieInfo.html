@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ pelicula.titulo }} - {{ nombreWeb }} </title>
+    <title>{{ movie.title }} - {{ siteName }} </title>
     <script src="http://vps722937.ovh.net:80/dwes/resources/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="http://vps722937.ovh.net:80/dwes/resources/jquery-ui-1.12.1/jquery-ui.min.css">
     <script src="http://vps722937.ovh.net:80/dwes/resources/jquery-ui-1.12.1/jquery-ui.min.js"></script>
@@ -44,7 +44,7 @@
             color: white;
             background: linear-gradient(
                     rgba(30, 27, 38, 0.95),
-                    rgba(30, 27, 38, 0.95)), url("{{pelicula.poster.url}}") no-repeat center center fixed;
+                    rgba(30, 27, 38, 0.95)), url("{{movie.poster.url}}") no-repeat center center fixed;
             background-size: cover;
         }
     </style>
@@ -54,21 +54,21 @@
      style="border: 3px solid #0d0631; border-radius: 4px; box-shadow: 0px 1px 62px 26px rgba(0,0,0,0.75); margin-top: 120px">
     <div class="row h-100">
         <div class="col-4 " style="background-color: #0d0631">
-            <img class="mt-2" src="{{ pelicula.poster.url }}" width="352px" height="350px" style="border: 4px solid black; border-radius: 10px">
+            <img class="mt-2" src="{{ movie.poster.url }}" width="352px" height="350px" style="border: 4px solid black; border-radius: 10px">
         </div>
         <div class="col-8" style="background-color: #0d0631">
-            <h2 class="mt-3">{{ pelicula.title }}</h2>
+            <h2 class="mt-3">{{ movie.title }}</h2>
             <dl>
                 <dt>Director:</dt>
-                <dd>{{ pelicula.director_id }}</dd>
+                <dd>{{ movie.director_id }}</dd>
                 <dt>Genre:</dt>
-                <dd>{{ pelicula.genre }}</dd>
+                <dd>{{ movie.genre }}</dd>
                 <dt>Plot:</dt>
-                <dd>{{ pelicula.plot }}</dd>
+                <dd>{{ movie.plot }}</dd>
                 <dt>Rating:</dt>
-                <dd id="movieRate">{{ pelicula.calculateRating }} Stars</dd>
+                <dd id="movieRate">{{ movie.calculateRating }} Stars</dd>
                 <dt>Units available:</dt>
-                <dd id="units">{{ pelicula.units }}</dd>
+                <dd id="units">{{ movie.units }}</dd>
             </dl>
             <div class="container">
                 <div class="row">
@@ -100,13 +100,13 @@
         $.ajax({
             type: 'POST',
             headers: {"X-CSRFToken": myCookie},
-            url: '{% url "alquilar_pelicula" %}',
-            data: {"id": '{{pelicula.id}}'},
+            url: '{% url "rent_movie" %}',
+            data: {"id": '{{movie.id}}'},
         }).done(function (response) {
             if (response.status === 'ok') {
                 $('#units').text(response.units);
             } else {
-                alert(`Lo siento, no nos quedan más unidades para esa pellicula`)
+                alert(`Sorry, we don't have more units for this movie`)
             }
         })
     });
@@ -125,7 +125,7 @@
                 url: '{% url "rate_movie" id=movie.id %}',
                 data: {rating: score}
             }).done(function (response) {
-                console.log(response);
+                console.log(response)
                 $('#movieRate').text(`${response.newAverage.toFixed(1)} Stars`)
             })
         }

@@ -16,26 +16,26 @@ import time
 #     def __str__(self):
 #         return self.name
 
-class Genero(Enum):
+class Genre(Enum):
     TERROR = 'TERROR'
-    ACCION = 'ACCION'
+    ACTION = 'ACTION'
     DRAMA = 'DRAMA'
     THRILLER = 'THRILLER'
 
     @classmethod
-    def elecciones(cls):
-        return [(eleccion.name, eleccion.value) for eleccion in cls]
+    def choices(cls):
+        return [(choice.name, choice.value) for choice in cls]
 
 
 class Director(models.Model):
-    nombre = models.CharField('Nombre', max_length=50)
-    fecha_nacimiento = models.DateField('Fecha de nacimiento', blank=True)
+    name = models.CharField('Name', max_length=50)
+    birht_date = models.DateField('Birth Date', blank=True)
 
     def __str__(self):
-        return self.nombre
+        return self.name
 
 
-class Pelicula(models.Model):
+class Movie(models.Model):
     # GENRES = {
     #     (1, 'TERROR'),
     #     (2, 'ACTION'),
@@ -50,29 +50,29 @@ class Pelicula(models.Model):
     #     'THRILLER',
     # ]
 
-    def subirImagenAlDirectorio(self, nombreArchivo):
-        return 'moviePosters/%s_%s' % (time.time(), nombreArchivo)
+    def uploadImageDirectory(self, filename):
+        return 'moviePosters/%s_%s' % (time.time(), filename)
 
-    def calcularNota(self):
-        resultado = 0
+    def calculateRating(self):
+        result = 0
 
-        if self.puntos != 0 and self.cantidad_votos != 0:
-            resultado = round(self.puntos / self.cantidad_votos, 1)
+        if self.points != 0 and self.voters != 0:
+            result = round(self.points / self.voters, 1)
 
-        return resultado
+        return result
 
-    titulo = models.CharField('Titulo', max_length=40, null=False, default='sin titulo')
-    trama = models.CharField('Trama de la pelicula', max_length=1000, null=False, default='No hay trama definida')
-    unidades = models.DecimalField('Unidades disponibles', max_digits=4, decimal_places=0, default=0,
-                                   validators=[MinValueValidator(0), MaxValueValidator(999)])
-    genero = models.CharField('Genero', choices=Genero.choices(), default=Genero.ACTION, max_length=20)
-    poster = models.ImageField('Poster', upload_to=subirImagenAlDirectorio, null=True)
+    title = models.CharField('Title', max_length=40, null=False, default='untitled')
+    plot = models.CharField('Movie Plot', max_length=1000, null=False, default='No plot defined')
+    units = models.DecimalField('Available Units', max_digits=4, decimal_places=0, default=0,
+                                validators=[MinValueValidator(0), MaxValueValidator(999)])
+    genre = models.CharField('Genre', choices=Genre.choices(), default=Genre.ACTION, max_length=20)
+    poster = models.ImageField('Poster', upload_to=uploadImageDirectory, null=True)
 
-    puntos = models.IntegerField('Puntos', default=1, null=False, blank=False)
-    cantidad_votos = models.IntegerField('Cantidad de votos', default=1, null=False, blank=False)
+    points = models.IntegerField('Points', default=1, null=False, blank=False)
+    voters = models.IntegerField('Voters', default=1, null=False, blank=False)
 
-    director_id = models.ForeignKey(Director, on_delete=models.DO_NOTHING, related_name='pelicula')
+    director_id = models.ForeignKey(Director, on_delete=models.DO_NOTHING, related_name='movie')
 
     # Linea usada para que se vea el titulo desde el admin
     def __str__(self):
-        return self.titulo
+        return self.title

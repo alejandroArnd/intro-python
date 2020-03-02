@@ -4,36 +4,36 @@ from django.http import HttpResponse, JsonResponse
 
 from django.shortcuts import render
 
-from .models import Pelicula
+from .models import Movie
 
 # Create your views here.
-NOMBRE_WEB = 'Movie Doctor'
+SITE_NAME = 'Movie Doctor'
 
 
-def listaPeliculas(request):
+def moviesList(request):
     context = {
-        'listaPeliculas': Pelicula.objects.all(),
-        'nombreWeb': NOMBRE_WEB
+        'movieList': Movie.objects.all(),
+        'siteName': SITE_NAME
     }
 
     return render(request, 'movies.html', context)
     # return HttpResponse("Welcome!")
 
 
-def mostrarPelicula(request, id):
+def showMovieData(request, id):
     context = {
-        'movie': Pelicula.objects.get(id=id),
-        'siteName': NOMBRE_WEB
+        'movie': Movie.objects.get(id=id),
+        'siteName': SITE_NAME
     }
 
     return render(request, 'movieInfo.html', context)
 
 
-def alquilarPelicula(request):
+def rentMovie(request):
     response = {'status': 'ko'}
 
     id = request.POST.get("id")
-    movie = Pelicula.objects.get(id=id)
+    movie = Movie.objects.get(id=id)
     if movie.units > 0:
         movie.units -= 1
         movie.save()
@@ -42,13 +42,13 @@ def alquilarPelicula(request):
     return JsonResponse(response)
 
 
-def puntuarPelicula(request, id):
-    nota = request.GET.get('nota')
+def rateMovie(request, id):
+    rating = request.GET.get('rating')
 
-    pelicula = Pelicula.objects.get(id=id)
-    pelicula.cantidad_votos += 1
-    pelicula.puntos += int(nota)
-    pelicula.save()
+    movie = Movie.objects.get(id=id)
+    movie.voters += 1
+    movie.points += int(rating)
+    movie.save()
 
-    nuevaMedia = pelicula.puntos / pelicula.cantidad_votos
-    return JsonResponse({'status': 'ok', 'nuevaMedia': nuevaMedia})
+    newAverage = movie.points / movie.voters
+    return JsonResponse({'status': 'ok', 'newAverage': newAverage})
