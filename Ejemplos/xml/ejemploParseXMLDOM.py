@@ -15,7 +15,7 @@ from xml.dom import minidom
 from lxml import etree
 
 print('Parseo con minidom')
-xmldoc = minidom.parse('ejmeplo.xml')
+xmldoc = minidom.parse('ejemplo.xml')
 neighborlist = xmldoc.getElementsByTagName('neighbor')
 print(len(neighborlist))
 print(neighborlist[0].attributes['name'].value)
@@ -23,7 +23,7 @@ for neighbor in neighborlist:
     print(neighbor.attributes['name'].value)
 
 print('Parseo con lxml')
-xml = etree.parse('ejmeplo.xml')
+xml = etree.parse('ejemplo.xml')
 yearsCountry= xml.xpath("/data/country/year/text()")
 for year in yearsCountry:
     print(year)
