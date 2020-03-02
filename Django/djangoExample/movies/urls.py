@@ -1,11 +1,11 @@
 from django.conf.urls import url
 from django.urls import path
 
-from .views import moviesList, showMovieData, rentMovie, rateMovie
+from .views import listaPeliculas, mostrarPelicula, alquilarPelicula, puntuarPelicula
 
 urlpatterns = [
-    url(r'^$', moviesList, name='movies_list'),
-    path('<int:id>/', showMovieData, name="address_edit"),
-    path('rent/', rentMovie, name="rent_movie"),
-    path('rate/<int:id>/', rateMovie, name="rate_movie")
+    url(r'^$', listaPeliculas, name='lista_peliculas'),
+    path('<int:id>/', mostrarPelicula, name="ver_pelicula"),
+    path('alquilar/', alquilarPelicula, name="alquilar_pelicula"),
+    path('puntuar/<int:id>/', puntuarPelicula, name="puntuar_pelicula")
 ]

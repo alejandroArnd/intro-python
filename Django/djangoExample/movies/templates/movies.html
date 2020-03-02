@@ -27,13 +27,13 @@
 <div class="conatiner">
     <div class="row">
         <div class="col-12 text-center mb-5 mt-5 ">
-             <h1>{{ siteName }}</h1>
+             <h1>{{ nombreWeb }}</h1>
         </div>
     </div>
 </div>
   <div class="card-list  container">
       <div class="row">
-      {% for movie in movieList %}
+      {% for movie in listaPeliculas %}
           <div class="col-4 mb-5">
           <div class="card h-100" style="width: 18rem;">
             <img class="card-img-top" src="{{ movie.poster.url }}" alt="Card image cap" height="300em">
