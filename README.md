@@ -22,7 +22,7 @@ django-admin startproject nombreProyecto
 
 ### Comandos utiles para django
 
-Runsrver para levantar el servidor 
+Runserver para levantar el servidor 
 ~~~
 python3 manage.py runserver
 ~~~
@@ -61,4 +61,10 @@ Y para cargar este json en el nuevo gestor de base de datos :
 
 ~~~
 python3 manage.py loaddata datadump.json
+~~~
+
+En caso de tener tests ejecutamos el comando test para que se ejecuten estos
+
+~~~
+python3 manage.py test
 ~~~
