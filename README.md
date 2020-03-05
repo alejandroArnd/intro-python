@@ -9,6 +9,10 @@ Buenas! Esto es una introducción de python y django
 * Mysql
 
 ## Django
+Para instalar django en nuestra maquina usaremos:
+~~~
+python -m django --version
+~~~
 
 Antes de empezar instalamos un entorno virtual (virtualenv) ya que con ellos podemos mantener 
 los paquetes de nuestro proyecto agrupados, y separados de los paquetes de otros proyectos y del sistema .
