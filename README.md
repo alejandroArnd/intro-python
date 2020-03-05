@@ -1,3 +1,7 @@
+[![Django Logo](https://www.andreigarciacuadra.es/images/tech/django.svg)](https://www.djangoproject.com/)
+
+
+
 # intro-python
 Buenas! Esto es una introducción de python y django
 
