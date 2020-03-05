@@ -11,7 +11,7 @@ Buenas! Esto es una introducción de python y django
 ## Django
 Para instalar django en nuestra maquina usaremos:
 ~~~
-python -m django --version
+python -m pip install Django
 ~~~
 
 Antes de empezar instalamos un entorno virtual (virtualenv) ya que con ellos podemos mantener 
